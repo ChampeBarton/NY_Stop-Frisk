@@ -4,6 +4,9 @@
         <meta charset="utf-8" />
         <title>Stop and Frisk Data</title>
         <!-- import plugin script -->
+        <!-- To do so, enter appropriate path to Chart.min.js -->
+        <!-- file. If the HTML and the Chart.min.js script are -->
+        <!-- in thesame directory, you can leave code as is. -->
         <script src='Chart.min.js'></script>
     </head>
     <style>
@@ -18,10 +21,70 @@
     </style>
     <body>
         <!-- bar chart canvas element -->
+        <canvas id="Frisk Numbers Data" width="600" height="400"></canvas>
         <canvas id="Stop & Frisk Data" width="600" height="400"></canvas>
         <canvas id="U.S. Arrest Data" width="600" height="400"></canvas>
         <canvas id="Rate Comparison" width="600" height="400"></canvas>
         <script>
+
+            // bar chart data
+            var NumbersBarData = {
+                labels: ["2005", "2006", "2007", "2008", "2009", "2010", "2011", "2012"],
+                datasets: [
+                {
+                        label: 'Number of individuals stopped:',
+                        backgroundColor: "#3d3c3c",
+                        data: [398192, 506492, 472097, 540303, 581169, 601286, 685725, 532912],
+                    }],
+            };
+            // get bar chart canvas
+            var NumbersData = document.getElementById("Frisk Numbers Data").getContext("2d");
+            // draw bar chart
+
+            var NumbersBarChart = new Chart(NumbersData, {
+                type: 'bar',
+                data: NumbersBarData,
+                options: {
+                    responsive: false,
+                    maintainaspectratio: true,
+                    legend: {
+                        display: false
+                    },
+                    title: {
+                        display: true,
+                        text: "Number of Inidividuals Stopped in NYC Stop & Frisk '05-'12",
+                        fontFamily: 'Georgia',
+                        fontSize: 24
+                    },
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                min: 0,
+                                stepSize: 100000,
+                                max: 700000,
+                                fontFamily: "Avenir Next"
+                            },
+                            scaleLabel: {
+                                display: true,
+                                labelString: 'Number of People Stopped',
+                                fontSize: 12,
+                                fontFamily: 'Avenir Next'
+                            }
+                        }],
+                        xAxes: [{
+                            ticks: {
+                                fontFamily: "Avenir Next"
+                            },
+                            scaleLabel: {
+                                display: true,
+                                labelString: "Year",
+                                fontSize: 12,
+                                fontFamily: 'Avenir Next'
+                            }
+                        }]
+                    }
+                }
+            });
 
             // bar chart data
             var SFbarData = {
