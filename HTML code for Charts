@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Stop and Frisk Data</title>
+        <!-- import plugin script -->
+        <script src='Chart.min.js'></script>
+    </head>
+    <style>
+        canvas {
+            padding-left: 0;
+            padding-right: 0;
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+            width: 800px;
+        }
+    </style>
+    <body>
+        <!-- bar chart canvas element -->
+        <canvas id="Stop & Frisk Data" width="600" height="400"></canvas>
+        <canvas id="U.S. Arrest Data" width="600" height="400"></canvas>
+        <canvas id="Rate Comparison" width="600" height="400"></canvas>
+        <script>
+
+            // bar chart data
+            var SFbarData = {
+                labels: ["2005", "2006", "2007", "2008", "2009", "2010", "2011", "2012"],
+                datasets: [
+                {
+                        label: '% of those stopped who are white',
+                        backgroundColor: "#FF6384",
+                        data: [10.2244646, 10.5628519, 11.2025707, 10.6699389, 9.2229627, 9.1154625, 9.0130883, 9.4510914],
+                    }, {
+                        type: 'bar',
+                        label: '% of those stopped who are black',
+                         backgroundColor: "#36A2EB",
+                        data: [49.3656327, 52.8079417, 51.6347276, 51.0061947, 53.4458996, 52.4015194, 51.1492216, 53.3350722],
+                    }],
+            };
+            // get bar chart canvas
+            var FriskData = document.getElementById("Stop & Frisk Data").getContext("2d");
+            // draw bar chart
+
+            var SFbarChart = new Chart(FriskData, {
+                type: 'bar',
+                data: SFbarData,
+                options: {
+                    responsive: false,
+                    maintainaspectratio: true,
+                    legend: {
+                        display: false
+                    },
+                    title: {
+                        display: true,
+                        text: 'Black/White Differences in NYC Stop and Frisk',
+                        fontFamily: 'Georgia',
+                        fontSize: 24
+                    },
+                    scales: {
+                        yAxes: [{
+                            stacked: false,
+                            ticks: {
+                                min: 0,
+                                stepSize: 10,
+                                max: 100,
+                                fontFamily: "Avenir Next"
+                            },
+                            scaleLabel: {
+                                display: true,
+                                labelString: '% of Those Stopped',
+                                fontSize: 12,
+                                fontFamily: 'Avenir Next'
+                            }
+                        }],
+                        xAxes: [{
+                            ticks: {
+                                fontFamily: "Avenir Next"
+                            },
+                            scaleLabel: {
+                                display: true,
+                                labelString: "Year",
+                                fontSize: 12,
+                                fontFamily: 'Avenir Next'
+                            }
+                        }]
+                    }
+                }
+            });
+            // bar chart data
+            var ArrestBarData = {
+                labels: ["2005", "2006", "2007", "2008", "2009", "2010", "2011", "2012"],
+                datasets: [
+                {
+                        label: '% of whites arrested',
+                        backgroundColor: "#FF6384",
+                        data: [4.1232392, 4.1736711, 4.0831471, 3.9805368, 3.8540104, 3.7119418, 3.4810055, 3.3923286],
+                    }, {
+                        type: 'bar',
+                        label: '% of blacks arrested',
+                         backgroundColor: "#36A2EB",
+                        data: [9.966593, 10.0563256, 9.8289222, 9.6388683, 9.3430876, 8.6636271, 8.140147, 7.9200494],
+                    }],
+            };
+            // get bar chart canvas
+            var ArrestData = document.getElementById("U.S. Arrest Data").getContext("2d");
+            // draw bar chart
+
+            var ArrestBarChart = new Chart(ArrestData, {
+                type: 'bar',
+                data: ArrestBarData,
+                options: {
+                    responsive: false,
+                    maintainaspectratio: true,
+                    legend: {
+                        display: false
+                    },
+                    title: {
+                        display: true,
+                        text: 'Black/White Differences in U.S. Arrest Data',
+                        fontFamily: 'Georgia',
+                        fontSize: 24
+                    },
+                    scales: {
+                        yAxes: [{
+                            stacked: false,
+                            ticks: {
+                                min: 0,
+                                stepSize: 10,
+                                max: 100,
+                                fontFamily: "Avenir Next"
+                            },
+                            scaleLabel: {
+                                display: true,
+                                labelString: '% of Race Arrested',
+                                fontSize: 12,
+                                fontFamily: 'Avenir Next'
+                            }
+                        }],
+                        xAxes: [{
+                            ticks: {
+                                fontFamily: "Avenir Next"
+                            },
+                            scaleLabel: {
+                                display: true,
+                                labelString: "Year",
+                                fontSize: 12,
+                                fontFamily: 'Avenir Next'
+                            }
+                        }]
+                    }
+                }
+            }); 
+            // bar chart data
+            var RateComparisonBarData = {
+                labels: ["2005", "2006", "2007", "2008", "2009", "2010", "2011", "2012"],
+                datasets: [
+                {
+                        label: 'Blacks x times more likely to be stopped than whites',
+                        backgroundColor: '#cc65fe',
+                        data: [4.828187557, 4.999401869, 4.609185622, 4.780364267, 5.79487323, 5.748640759, 5.674993933, 5.643271254],
+                    }, {
+                        type: 'bar',
+                        label: 'Blacks x times more likely to be arrested than whites',
+                         backgroundColor: '#ffce56',
+                        data: [2.417175527, 2.40946768, 2.407192765, 2.421499597, 2.424250766, 2.333987872, 2.338447027, 2.334694028],
+                    }],
+            };
+            // get bar chart canvas
+            var RateComparisonData = document.getElementById("Rate Comparison").getContext("2d");
+            // draw bar chart
+
+            var rateComparisonBarChart = new Chart(RateComparisonData, {
+                type: 'bar',
+                data: RateComparisonBarData,
+                options: {
+                    responsive: false,
+                    maintainaspectratio: true,
+                    legend: {
+                        display: false
+                    },
+                    title: {
+                        display: true,
+                        text: 'Likelihood of Committing Crime vs. Likelihood of Getting Stopped (Black/White)',
+                        fontFamily: 'Georgia',
+                        fontSize: 24
+                    },
+                    scales: {
+                        yAxes: [{
+                            stacked: false,
+                            ticks: {
+                                min: 0,
+                                stepSize: 1,
+                                max: 10,
+                                fontFamily: "Avenir Next"
+                            },
+                            scaleLabel: {
+                                display: true,
+                                labelString: 'How Many Times More Likely to be Stopped/Arrested',
+                                fontSize: 12,
+                                fontFamily: 'Avenir Next'
+                            }
+                        }],
+                        xAxes: [{
+                            ticks: {
+                                fontFamily: "Avenir Next"
+                            },
+                            scaleLabel: {
+                                display: true,
+                                labelString: "Year",
+                                fontSize: 12,
+                                fontFamily: 'Avenir Next'
+                            }
+                        }]
+                    }
+                }
+            });
+        </script>
+    </body>
+</html>
