@@ -244,7 +244,7 @@
                     },
                     title: {
                         display: true,
-                        text: 'Likelihood of Committing Crime vs. Likelihood of Getting Stopped (Black/White)',
+                        text: 'Likelihood of Getting Stopped vs. Likelihood of Committing Crime (Black/White)',
                         fontFamily: 'Georgia',
                         fontSize: 24
                     },
