@@ -6,7 +6,7 @@
         <!-- import plugin script -->
         <!-- To do so, enter appropriate path to Chart.min.js -->
         <!-- file. If the HTML and the Chart.min.js script are -->
-        <!-- in thesame directory, you can leave code as is. -->
+        <!-- in the same directory, you can leave code as is. -->
         <script src='Chart.min.js'></script>
     </head>
     <style>
